@@ -1,0 +1,18 @@
+links aula 01
+
+- http://reactivision.sourceforge.net/
+- https://www.youtube.com/watch?v=MAcpT38_g9Q
+- https://www.youtube.com/watch?v=5fVWg_rfq0w
+- https://www.youtube.com/watch?v=hNeCHI4NAzw
+- http://www.bitshapesoftware.com/instruments/gyrosc/
+- https://hexler.net/software/touchosc
+- https://www.youtube.com/watch?v=IEnalf1qoqM
+- https://www.youtube.com/watch?v=ZVTbRNu2BI0
+- https://www.youtube.com/watch?v=YcdldZ1E9gU
+- https://www.youtube.com/watch?v=y7sgcFhk6ZM
+- https://p5js.org/examples/dom-input-and-button.html
+- http://www.instructables.com/id/Arduino-IR-Remote-Control/
+- https://www.youtube.com/watch?v=ICpM3ItIhI0
+- https://www.youtube.com/watch?v=v17o2itd-lU
+- http://www.tvbgone.com/
+- https://vimeo.com/198374904
