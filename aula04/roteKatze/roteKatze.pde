@@ -10,11 +10,19 @@ void setup()
   videoGato = new Movie(this, "cat.mov");
   videoGato.loop();
   videoGato.speed(0.5);
+  
+  //imageMode(CENTER);
 }
 
 void draw()
 {
   //background(255);
+  
+  //if (videoGato.available() == true)
+  //{
+  //  videoGato.read();
+  //}
+  
   float filtroPB = map(mouseY, 0, 500, 0, 1);
   videoGato.filter(THRESHOLD, filtroPB);
   
