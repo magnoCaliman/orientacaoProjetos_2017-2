@@ -97,9 +97,9 @@ SynthDef("usandoStartPos", {
 )
 
 ~b0.query
-Synth("usandoStartPos", [qualBuffer: ~b0.bufnum, pontoInicio: s.sampleRate * 6]);
-Synth("usandoStartPos", [qualBuffer: ~b0.bufnum, pontoInicio: s.sampleRate * rrand(1,8).postln]);
-Synth("usandoStartPos", [qualBuffer: ~b0.bufnum, pontoInicio: s.sampleRate * [2.5, 3.5, 5.5].choose]);
+Synth("usandoStartPos", [qualBuffer:~b0.bufnum, pontoInicio:s.sampleRate * 6]);
+Synth("usandoStartPos", [qualBuffer:~b0.bufnum, pontoInicio:s.sampleRate * rrand(1,8).postln]);
+Synth("usandoStartPos", [qualBuffer:~b0.bufnum, pontoInicio:s.sampleRate * [2.5, 3.5, 5.5].choose]);
 
 
 //
@@ -112,7 +112,7 @@ SynthDef("usandoLoop", {
 }).add
 )
 
-Synth("usandoLoop", [qualBuffer: ~b1.bufnum, estahLoopando: 1]);
+Synth("usandoLoop", [qualBuffer:~b1.bufnum, estahLoopando:1]);
 // como desligar? só mudar "estahLoopando" para 0 funciona?
 
 x = Synth("usandoLoop", [qualBuffer: ~b1.bufnum, estahLoopando: 1]);
@@ -128,11 +128,8 @@ SynthDef("usandoLoop02", {
 }).add
 )
 
-Synth("usandoLoop02", [qualBuffer: ~b1.bufnum, pontoInicio: s.sampleRate * 3, estahLoopando: 0]);
-Synth("usandoLoop02", [qualBuffer: ~b3_final.bufnum, pontoInicio: 0, estahLoopando: 1]);
-// fazer exemplo com um buffer grande (~b3) de onde retira vários buffers menores (como ~b3_final)
-// e liga/desliga cada um individualmente
-// talvez exercício de gravação...
+Synth("usandoLoop02", [qualBuffer:~b1.bufnum, pontoInicio:s.sampleRate * 3, estahLoopando: 0]);
+Synth("usandoLoop02", [qualBuffer:~b3_final.bufnum, pontoInicio: 0, estahLoopando: 1]);
 
 
 //
@@ -145,8 +142,8 @@ SynthDef("rate", {
 }).add
 )
 
-~b4 = Buffer.read(s, "/Users/Magno/Desktop/temp/voice2.wav");
-~b5 = Buffer.read(s, "/Users/Magno/Desktop/temp/cigarra.wav");
+~b4 = Buffer.read(s, ~pastaAtual +/+ "sons/voice2.wav");
+~b5 = Buffer.read(s, ~pastaAtual +/+ "sons/cigarra.wav");
 
 Synth("rate", [qualBuffer: ~b1.bufnum, velo: 2]);
 Synth("rate", [qualBuffer: ~b4.bufnum, velo: 0.8]);
@@ -157,12 +154,12 @@ Synth("rate", [qualBuffer: ~b5.bufnum, velo: 0.2]);
 
 
 // tocando ao contrário
-Synth("rate", [qualBuffer: ~b1.bufnum, velo: -1]); // não funciona...
+Synth("rate", [qualBuffer: ~b1.bufnum, velo: -1]); // não funciona... pq?
 Synth("rate", [qualBuffer: ~b1.bufnum, velo: -1, pontoInicio: ~b1.numFrames - 2]); //agora sim!
 
 
 // para transposição cromática
-~b6 = Buffer.read(s, "/Users/Magno/Desktop/temp/notaPiano.wav");
+~b6 = Buffer.read(s, ~pastaAtual +/+ "sons/notaPiano.wav");
 
 Synth("rate", [qualBuffer: ~b6.bufnum, velo: 1.midiratio]);
 Synth("rate", [qualBuffer: ~b6.bufnum, velo: 2.midiratio]);
@@ -170,17 +167,5 @@ Synth("rate", [qualBuffer: ~b6.bufnum, velo: 3.midiratio]);
 Synth("rate", [qualBuffer: ~b6.bufnum, velo: 4.midiratio]);
 Synth("rate", [qualBuffer: ~b6.bufnum, velo: 5.midiratio]);
 
-
-
-
-// não funciona...
-(
-SynthDef.new("startPosTrigger", {
-	arg amp = 1, qualBuffer, pontoInicio = 0, trig = 1;
-	var som = PlayBuf.ar(1, qualBuffer, trigger:trig, startPos:pontoInicio, doneAction:0);
-	som = som * amp;
-	Out.ar(0, Pan2.ar(som)); // lembram do Pan2?
-}).add
-)
-
-Synth.new("startPosTrigger", [qualBuffer: ~b0.bufnum, pontoInicio: s.sampleRate * 6, trig: 1]);
+s.record
+s.stopRecording
