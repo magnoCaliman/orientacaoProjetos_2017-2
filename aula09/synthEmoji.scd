@@ -38,7 +38,7 @@ snd = Pluck.ar(
 )
 
 Synth("plucking") //roda com argumentos default do SynthDef
-Synth("plucking", [\freq, 600, \decay, 10]) //modifica argumentos
+Synth("plucking", [\freq, rrand(200, 400), \decay, 1]) //modifica argumentos
 
 
 
